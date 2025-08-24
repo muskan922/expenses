@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <div id="containt">
+        <div>
+        <h1 style="color:rgb(14, 8, 8);font-family: 'Dancing Script', cursive, serif;font-size:30px;">To do List</h1>
+        <input id="inp" placeholder="new task";></input>
+        <button onclick="abc()">Add</button>
+        </div>
+        
+        <div>
+            <img src="graphic-with-a-black-white-and-pink-elegant-plant-flower-sakura-ornament-on-an-isolated-background-png.PNG" alt="no">
+
+        </div> 
+        
+
+        <ul>
+        
+        </ul>
+    </div>
+ 
+    <script>
+        
+        const abc = () => {
+            let taskText = document.getElementById('inp').value.trim(); 
+
+            if (taskText === "") {
+                console.log("Please enter a valid task!"); 
+                return; 
+            }
+
+        
+           let abc = document.createElement('li');
+            document.querySelector('ul').appendChild(abc);
+
+            
+            let cb = document.createElement('input');
+            cb.type = 'checkbox';
+            abc.appendChild(cb);
+
+            
+            let text = document.createElement('span');
+            text.innerHTML = taskText;
+            abc.appendChild(text);
+
+             
+            let edit = document.createElement('span');
+            edit.textContent = "Edit";  
+            edit.className = 'edit';    
+            abc.appendChild(edit);
+
+        
+            edit.onclick = function () {
+                let newText = prompt("Edit your task:", text.innerHTML);
+                if (newText !== null && newText.trim() !== "") {
+                    text.innerHTML = newText.trim();
+                }
+            };
+
+            
+            let del = document.createElement('span');
+            del.className = 'pen';
+            del.innerHTML = "Delete";
+            abc.appendChild(del);
+
+            
+            del.onclick = function () {
+                abc.remove();
+            };
+
+            
+            cb.onclick = function () {
+                if (cb.checked) {
+                    text.style.textDecoration = 'line-through'; 
+                } else {
+                    text.style.textDecoration = 'none'; 
+                }
+            };
+
+            
+            document.getElementById('inp').value = '';
+        };
+    </script>
+</body>
+
+</html>
